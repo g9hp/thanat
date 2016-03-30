@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<html>
+  <body>
+   <canvas id="Mv" width="900" height="600" style="border:2px solid #9966FF;">
+ 
+</canvas>
+   
+    <script>
+ 
+      var c = document.getElementById('Mv');
+      var ctx = c.getContext('2d');
+
+ function Barchart(x1,y1,x2,y2,color){
+ 
+       ctx.beginPath();
+       ctx.moveTo(x1,y1 );
+       ctx.lineTo(x2,y2 );
+       ctx.lineWidth=25;
+       ctx.strokeStyle=color;
+       ctx.stroke();
+    
+ 
+ }
+
+ function line(x3,y3,x4,y4){
+ ctx.beginPath();
+       ctx.moveTo(x3,y3);
+       ctx.lineTo(x4,y4);
+       ctx.lineWidth=1;
+    ctx.strokeStyle="#000000";
+ ctx.stroke(); 
+ }
+ 
+ function write(text,x5,y5){
+ ctx.font = "30px Angsana New";
+ ctx.strokeStyle="#000099";
+ ctx.strokeText(text,x5,y5);
+
+ }
+ //กราฟ
+ 
+ Barchart(198,400,198,150, "#ffff00");
+ Barchart(288,380,288,190, "#FF66CC");
+ Barchart(377,350,377,100, "#66FF33");
+ Barchart(466,385,466,130, "#FF6600");
+ Barchart(558,360,558,160, "#00CCFF");
+ Barchart(648,394,648,110, "#6600CC");
+ Barchart(738,383,738,160, "#FF0000");
+ //เส้น
+ line(100,405,770,405);
+ line(100,355,770,355);
+ line(100,305,770,305);
+ line(100,255,770,255);
+ line(100,205,770,205);
+ line(100,155,770,155);
+ line(100,105,770,105);
+ 
+ //อุณภูมิจะนะ
+ write("อุณหภูมิอำเภอจะนะ ",690,40);
+ write("22°",100,400);
+ write("24°",100,350);
+ write("26°",100,300);
+ write("28°",100,250);
+ write("30°",100,200);
+ write("32°",100,150);
+ write("34°",100,100);
+ 
+ //ข้อความวัน
+ write("จ",190,430);
+ write("อ",280,430);
+ write("พ",370,430);
+ write("พฤ",460,430);
+ write("ศ",550,430);
+ write("ส",640,430);
+ write("อา",730,430); 
+ write("กราฟแสดงผลระดับอุณหภูมิ",300,530);
+ </script>
+ 
+ 
+ 
+ 
+ 
+ 
+ <canvas id="Mv2" width="900" height="600" style="border:2px solid #9999FF;">
+</canvas>
+   <script>
+     var c = document.getElementById('Mv2');
+      var ctx = c.getContext('2d');
+var lastend = 0;
+var data = [200,250,310,180,90,350]; 
+var myTotal = 0; 
+var myColor = ['#FF00CC', '#FF9900','#00FF00','#00FFFF','#3300CC','#FF0000'];
+
+for (var e = 0; e < data.length; e++) {
+  myTotal += data[e];
+}
+
+for (var i = 0; i < data.length; i++) {
+ 
+  ctx.fillStyle = myColor[i];
+  function th(text,x1,y1){
+ ctx.font = "25px Angsana New";
+ ctx.strokeStyle="#003333";
+ ctx.strokeText(text,x1,y1);
+ 
+ }
+ 
+ var x1  = c.width-200;
+ th("คณะที่มี นศ สมัครเรียน",600,160);
+ th("มนุษย์",x1,200);
+ th("วิทย์และเทคโนโลยี",x1,230);
+ th("ครุ",x1,260);
+ th("เกษตร",x1,290);
+ th("อุต",x1,320);
+ th("การจัดการ",x1,350);
+ th("กราฟแสดง นศ มาสมัครเรียน มภร สงขลา",330,530);
+ 
+ 
+
+  ctx.beginPath();
+ ctx.moveTo(c.width/2,c.height/2);
+  ctx.arc(c.width/2,c.height/2, 120, lastend, lastend + (Math.PI * 2 * (data[i] / myTotal)), false);
+  ctx.lineTo(c.width/2,c.height/2);
+  ctx.fill();
+  lastend += Math.PI * 2 * (data[i] / myTotal);
+
+} 
+
+ function tt (x1,y1,x2,y2,j){
+ ctx.beginPath();
+         ctx.moveTo(x1,y1 );
+       ctx.lineTo(x2,y2 );
+       
+        ctx.lineWidth=20;
+        ctx.strokeStyle = j;
+       ctx.stroke();} 
+var x1 = x2 =c.width -230; 
+
+for (var j = 0;j < data.length; j++) {
+ 
+ 
+ tt(x1,200,x2,185,myColor[0]);
+ tt(x1,230,x2,215,myColor[1]);
+ tt(x1,260,x2,245,myColor[2]);
+ tt(x1,290,x2,275,myColor[3]);
+ tt(x1,320,x2,305,myColor[4]);
+ tt(x1,350,x2,335,myColor[5]);
+}
+ </script>
+   
+  </body>
+</html>
+
+<body> 
+ <canvas 
+ id="Mv3" width="900" height="600"
+ style="border:2px solid #6600FF;"> </canvas>
+ <script>
+ var t = document.getElementById('Mv3');
+ var tt = t.getContext('2d');
+ function txt(text,x1,y1){
+  tt.font = "25px Angsana New";
+  tt.strokeText(text,x1,y1);
+ 
+  
+ }  
+   function t3(mx,my,lx,ly,wid,clr){ 
+ 
+ tt.beginPath();
+ tt.moveTo(mx,my);
+ tt.lineTo(lx,ly);
+ tt.lineWidth = wid;
+ tt.strokeStyle = clr;
+ tt.stroke();
+ }
+ txt("กราฟแสดงรายจ่าย",200,80);
+   txt("เดือน มกราคม",530,90);
+ txt("1-7",150,425);
+ txt("8-14",220,425);
+ txt("15-21",300,425);
+ txt("22-28",370,425);
+ txt("29-31",450,425);
+ txt("0",50,400);
+ txt("300",50,350);
+ txt("600",50,300);
+ txt("900",50,250);
+ txt("1200",50,200);
+ txt("1500",50,150);
+
+ t3(150,400,500,400,3,'#000000');
+ t3(150,100,150,400,3,'#000000');
+ t3(150,350,500,350,1,'#000000');
+ t3(150,300,500,300,1,'#000000');
+ t3(150,250,500,250,1,'#000000');
+ t3(150,150,500,150,1,'#000000');
+ t3(150,200,500,200,1,'#000000');
+ //เส้นกราฟ
+ 
+ t3(150,300,230,250,4,'#FFFF33');
+ t3(230,250,310,220,4,'#FFFF33');
+ t3(310,220,390,180,4,'#FFFF33');
+ t3(390,180,470,280,4,'#FFFF33');
+ t3(470,280,500,250,4,'#FFFF33');
+
+</script>
+ </body>
+
+</html>
+ 
